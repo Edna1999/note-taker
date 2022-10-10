@@ -6,10 +6,10 @@ Once you type out a note and hit the save button on the top right corner the not
 Heroku has also been used to deploy the page linked below.
 
 
-![screenshot from my note taker](./assets/Images/Screen%20Shot%202022-10-10%20at%2011.29.06%20AM.png)
+![screenshot from my note taker](./Images/Screen%20Shot%202022-10-10%20at%2011.29.06%20AM.png)
 
 
-![screenshot from my note taker](./assets/Images/Screen%20Shot%202022-10-10%20at%2011.29.11%20AM.png)
+![screenshot from my note taker](./Images//Screen%20Shot%202022-10-10%20at%2011.29.11%20AM.png)
 
 
 Link to the deployed page: https://noteee---takerrr.herokuapp.com/
