@@ -30,7 +30,7 @@ apiRouter.get('/notes', (req, res) => {
   });
 
   //GET route for retrieving specific note
-  apiRouter.get('/notes/:note_id', (req,res) => {
+ apiRouter.get('/notes/:note_id', (req,res) => {
     DbHelpers.getNotes()
     .then((note) => {
         res.header(note);
@@ -48,7 +48,9 @@ apiRouter.get('/notes', (req, res) => {
           
 
           } 
-    }})
+    }
+
+  })
     .catch(error => {
       res.status(500);
       console.error(error)
@@ -58,9 +60,21 @@ apiRouter.get('/notes', (req, res) => {
 
 //  DELETE route for specific note
 apiRouter.delete('/notes/:note_id', (req, res) => {
-    DbHelpers.deleteNote(req.params.note_id)
-    .then(note => {
-      return res.json(note)})
+  DbHelpers.getNotes()
+  .then((notes) => {
+      res.header(notes);
+    
+      const noteId = req.params.note_id;
+    
+      const result = notes.filter((note) => note.note_id !== noteId)
+
+      return result
+
+      ? res.json(result)
+      : res.json('No note with that id');
+
+
+})
     .catch(err => {
       res.status(500)
       console.log(err)})
