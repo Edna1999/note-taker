@@ -67,8 +67,14 @@ apiRouter.delete('/notes/:note_id', (req, res) => {
       const noteId = req.params.note_id;
     
       const result = notes.filter((note) => note.note_id !== noteId)
+    
+      fs.writeFile('db/db.json', JSON.stringify(result), (err) => {
 
-      return result
+        if(err){
+          console.log(err)
+        } 
+      })
+
 
       ? res.json(result)
       : res.json('No note with that id');

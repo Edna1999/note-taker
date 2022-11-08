@@ -17,12 +17,12 @@ if (window.location.pathname === '/notes') {
 }
 
 //event listener for get started button
-const getStarted = () => {
-startBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.location.href = '/notes';
-})
-}
+// const getStarted = () => {
+// startBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   window.location.href = '/notes';
+// })
+// }
 
 // Show an element
 const show = (elem) => {
@@ -65,7 +65,8 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
-  if (activeNote.id) {
+  if (activeNote.note_id) {
+    console.log('hit')
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
@@ -95,7 +96,8 @@ const handleNoteDelete = (e) => {
   e.stopPropagation();
 
   const note = e.target;
-  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+  const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).note_id;
+console.log(noteId)
 
   if (activeNote.id === noteId) {
     activeNote = {};
@@ -190,9 +192,10 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
+
 }
 
 getAndRenderNotes();
-getStarted();
+// getStarted();
 
-module.exports = {getStarted};
+// module.exports = {getStarted};
